@@ -1,5 +1,5 @@
 import fs from 'fs';
-import express from 'express';
+import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 
 import { filterImageFromURL, deleteLocalFiles } from './util/util';
@@ -31,7 +31,7 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util';
   /**************************************************************************** */
 
   // @TODO1 implementation  
-  app.get("/filteredimage", async (req, res) => {
+  app.get('/filteredimage', async (req: Request, res: Response) => {
     const { image_url } = req.query;
     if (!image_url) {
       res.status(422).send("Please provide a 'image_url' parameter with valid URL value.");
